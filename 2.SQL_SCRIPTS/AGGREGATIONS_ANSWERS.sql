@@ -3,8 +3,19 @@ Lesson 10 Aggregations (COUNT, SUM, AVG, GROUP BY)
 
 SECTION 1  COUNT Aggregations (10 Questions)
 1. How many total properties are in the database?
+
+select count(property_id) 
+AS Total_Properties 
+FROM [housing_data].[dbo].[HousingData]
+
 2. How many properties are listed in each province?
+
+select ([province]), count(property_id) as no of properties from [housing_data].[dbo].[HousingData] group by province
+
 3. How many properties are listed in each city?
+
+select ([city]), count(property_id) as no of properties from [housing_data].[dbo].[HousingData]  group by city
+
 4. How many properties have more than 2 bedrooms?
 5. How many properties have 2 or more bathrooms?
 6. How many properties have parking for at least 2 cars?
