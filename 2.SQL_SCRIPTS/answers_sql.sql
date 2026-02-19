@@ -18,13 +18,51 @@ GROUP BY [PROVINCE]
 select [CITY], count([CITY]) 
 AS  No_of_properties from[housing_data].[dbo].[housingdata]
 GROUP BY [CITY]
+
 --4. How many properties have more than 2 bedrooms?
+select [bedrooms], count([bedrooms]) 
+AS  No_of_properties from[housing_data].[dbo].[housingdata]
+where bedrooms > 2
+GROUP BY [bedrooms]
+
 --5. How many properties have 2 or more bathrooms?
+select [bathrooms], count([bathrooms]) 
+AS  No_of_properties from[housing_data].[dbo].[housingdata]
+where bathrooms >= 2
+GROUP BY [bathrooms]
+
 --6. How many properties have parking for at least 2 cars?
+select [parking], count([parking]) 
+AS  No_of_properties from[housing_data].[dbo].[housingdata]
+where parking >= 2
+GROUP BY [parking]
 --7. How many properties are priced above R3,000,000?
+select count([property_id]) as Total_Properties 
+from [housing_data].[dbo].[housingdata]
+where property_price > 3000000
 --8. How many properties are in Gauteng?
+select [PROVINCE], count(PROVINCE) 
+AS  No_of_properties from[housing_data].[dbo].[housingdata]
+where PROVINCE= 'GAUTENG'
+GROUP BY [PROVINCE]
 --9. How many properties per province have floor size greater than 200?
+select [FLOOR_SIZE],([PROVINCE]), 
+count(FLOOR_SIZE) 
+AS NO_OF_PROPERTIES from[housing_data].[dbo].[housingdata]
+where FLOOR_SIZE > 200
+GROUP BY [PROVINCE]
+
+SELECT [province], COUNT(*) AS property_count
+FROM [housing_data].[dbo].[housingdata]
+WHERE floor_size > 200
+GROUP BY [province]
+ORDER BY property_count DESC
 --10. How many distinct provinces are in the table?
+SELECT DISTINCT [PROVINCE] COUNT([PROVINCE]) AS 
+FROM [housing_data].[dbo].[housingdata]
+
+SELECT COUNT (DISTINCT province) AS distinct_province_count
+FROM [housing_data].[dbo].[housingdata]
 --SECTION 2 – SUM Aggregations (10 Questions)
 --11. What is the total value of all properties combined?
 --12. What is the total property value per province?
